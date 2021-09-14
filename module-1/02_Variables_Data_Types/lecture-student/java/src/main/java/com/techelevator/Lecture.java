@@ -9,52 +9,70 @@ public class Lecture {
 			Then set it to 26.
 		*/
 
-		//System.out.println(numberOfExercises);
+		int numberOfExercises;
+		numberOfExercises = 26;
+		System.out.println(numberOfExercises);
+
+		// OR
+
+		int numberOfExercises2 = 26;
+		System.out.println(numberOfExercises2);
 
 		/*
 		2. Create a variable to hold a double and call it half.
 			Set it to 0.5.
 		*/
 
-		//System.out.println(half);
+		double half = 0.5;
+		System.out.println(half);
 
 		/*
 		3. Create a variable to hold a String and call it name.
 			Set it to "TechElevator".
 		*/
 
-		//System.out.println(name);
+		String name = "TechElevator";
+		System.out.println(name);
 
 		/*
 		4. Create a variable called seasonsOfFirefly and set it to 1.
 		*/
 
-		//System.out.println(seasonsOfFirefly);
+		int seasonsOfFirefly = 1;
+		System.out.println(seasonsOfFirefly);
 
 		/*
 		5. Create a variable called myFavoriteLanguage and set it to "Java".
 		*/
 
-		//System.out.println(myFavoriteLanguage);
+		String myFavoriteLanguage = "Java";
+		System.out.println(myFavoriteLanguage);
 
 		/*
 		6. Create a variable called pi and set it to 3.1416.
 		*/
-
-		//System.out.println(pi);
+		float pi = 3.1416F;
+		System.out.println(pi);
 
 		/*
 		7. Create and set a variable that holds your name.
 		*/
 
+		String myName = "Tiffany";
+		System.out.println(myName);
+
 		/*
 		8. Create and set a variable that holds the number of buttons on your mouse.
 		*/
+
+		int mouseButtons = 3;
+		System.out.println(mouseButtons);
 
 		/*
 		9. Create and set a variable that holds the percentage of battery left on
 		your phone.
 		*/
+		int percentOfPhoneBattery = 65;
 
 		/*
 		10. Create an int variable that holds the difference between 121 and 27.
@@ -117,16 +135,22 @@ public class Lecture {
 		/*
 		24. What is 1,000,000,000 * 3?
 		*/
-
+		long threeBillion = 1000000000L * 3;
+		System.out.println(threeBillion);
+		//OR
+		long threeBillion2 = (long)1000000000 * 3;
+		System.out.println(threeBillion2);
 		/*
 		25. Create a variable that holds a boolean called doneWithExercises and
 		set it to false.
 		*/
-
+		boolean doneWithExercises = false;
+		System.out.println(doneWithExercises);
 		/*
 		26. Now set doneWithExercise to true.
 		*/
-		
+		doneWithExercises = true;
+		System.out.println(doneWithExercises);
 	}
 
 }

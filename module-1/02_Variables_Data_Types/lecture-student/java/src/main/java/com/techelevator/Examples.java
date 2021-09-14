@@ -36,7 +36,7 @@ public class Examples {
 		int myInt = 123;
 		byte myByte = 3;
 		//myByte = myInt;  // causes a compiler error because the int variable is capable of holding values that won't fit in a byte
-		myInt = myByte;
+		//myInt = myByte;
 		
 		// Hexadecimal literals are preceded by 0x
 		int twentySix = 0x1A;
