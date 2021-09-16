@@ -1,13 +1,35 @@
 package com.techelevator;
 
+import java.util.function.DoubleToIntFunction;
+
 public class Lecture {
+
+    /* declaring arrays
+    like this
+     */
+
+    public void declaringArrays() {
+        int[] scores = new int[3]; // int[] is saying make an array of int, scores is the usual variable, int[3] is the number of ints within the array
+        scores[0] = 95;
+        scores[1] = 100;
+        scores[2] = 90;
+
+        System.out.println(scores[0]); //prints value at scores[0] so 95
+        int firstValue = scores[0]; //setting a variable of firstValue as the value of the int scores[0]
+
+        int[] scores2 = new int[] { 95, 100, 90 }; // you didn't have to tell how many ints instead of int[3] because of you filling in the values
+
+        int[] scores3 = {95,100,90}; // the new int[] is still happening, but intellij understands that it needs to do it, so you don't have to write it out
+
+        int aScore = scores3.length; // sets aScore to 3 because scores3 is 3 integers
+    }
 
     /*
     1. Return the created array
     */
     public int[] returnArray() {
         int[] array = { 80, 8080, 443 };
-        return null;
+        return array;
     }
 
     /*
@@ -15,7 +37,7 @@ public class Lecture {
     */
     public int returnFirstElement() {
         int[] portNumbers = { 80, 8080, 443 };
-        return 1;
+        return portNumbers[0];
     }
 
     /*
@@ -23,21 +45,21 @@ public class Lecture {
     */
     public int returnLastElement() {
         int[] portNumbers = { 80, 8080, 443 };
-        return 1;
+        return portNumbers[2]; // OR return portNumbers[portNumbers.length - 1]; for a more generic version
     }
 
     /*
     4. Return the first element of the array from the parameters
     */
     public int returnFirstElementOfParam(int[] passedInArray) {
-        return 1;
+        return passedInArray[0];
     }
 
     /*
     5. Return the last element of the array from the parameters
     */
     public int returnLastElementOfParam(int[] passedInArray) {
-        return 1;
+        return passedInArray[passedInArray.length - 1];
     }
 
     /*
@@ -45,14 +67,14 @@ public class Lecture {
        return it? There are a couple of different ways of doing this, what can you come up with?
     */
     public int returnVariableFromBlock(int number) {
-
+        int result;
         { // A new block with scoped variables
 
-            int result = number * 5;
+            result = number * 5;
 
         } // the result variable disappears here
 
-        return number; // We want to return result here. How?
+        return result; // We want to return result here. How?
     }
 
     /*
@@ -67,7 +89,7 @@ public class Lecture {
             result *= multiplier;
         }
 
-        return result == 1; // <-- Change the number to match result and make this be true
+        return result == 50; // <-- Change the number to match result and make this be true
     }
 
     /*
@@ -88,7 +110,7 @@ public class Lecture {
             double eight = five + three;
         }
 
-        return 0;
+        return one;
     }
 
     /*
@@ -97,14 +119,14 @@ public class Lecture {
     public boolean returnCounterFromLoop() {
 
         int[] arrayToLoopThrough = { 3, 4, 2, 9 };
-
+        //index of 3 (0, 1, 2, 3) but LENGTH of 4
         int counter = 0; // Must be started outside the block so that have access to it after the block
 
         for (int i = 0; i < arrayToLoopThrough.length; i++) {
             counter++;
         }
 
-        return counter == 1; // What should the number be to return true?
+        return counter == 4; // What should the number be to return true?
     }
 
     /*
@@ -116,7 +138,7 @@ public class Lecture {
         int counter = 0;
 
         //     Start;       Keep going while         Increment by one;
-        for (int i = 1; i < arrayToLoopThrough.length; i++) {
+        for (int i = 0; i < arrayToLoopThrough.length; i++) { // OR i <= array
             counter += 1;
         }
 
@@ -132,11 +154,22 @@ public class Lecture {
         int counter = 0;
 
         //     Start;       Keep going while         Increment by one;
-        for (int i = 0; i <= arrayToLoopThrough.length; i++) {
+        for (int i = 0; i < arrayToLoopThrough.length; i++) {
             counter = counter + 1;
         }
 
         return counter == 5;
+    }
+
+    /* 11.5 Return Sum */
+
+    public double sumOfDoubles(double[] arrayToSum) {
+        double sum = 0.0;
+
+        for (int i = 0; i < arrayToSum.length; i++) {
+            sum = sum + arrayToSum[i];
+        }
+        return sum;
     }
 
     /*
@@ -149,8 +182,15 @@ public class Lecture {
         int sum = 0;
 
         //     Start;       Keep going while       Increment by;
-        for (int i = 0; i < arrayToLoopThrough.length; i = i + 1) {
+        /* for (int i = 0; i < arrayToLoopThrough.length; i = i + 2) {
             sum = sum + arrayToLoopThrough[i];
+        } */
+
+        for (int i = 0; i < arrayToLoopThrough.length; i++) {
+            if (i % 2 == 0) {
+                sum = sum + arrayToLoopThrough[i];
+            }
+
         }
 
         return sum == 12;
