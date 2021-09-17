@@ -63,7 +63,7 @@ public class Exercises {
     public int diff21(int n) {
         if (n < 21) {
             return 21 - n;
-        } else if (n > 21){
+        } else if (n > 21) {
             return (n - 21) * 2;
         } else {
             return 0;
@@ -108,11 +108,11 @@ public class Exercises {
      posNeg(-4, -5, true) → true
      */
     public boolean posNeg(int a, int b, boolean negative) {
-        if ((a < 0) && (b < 0) && negative == true) {
+        if ((a < 0) && (b < 0) && negative) {
             return true;
-        } else if ((a < 0) && (b > 0) && negative == false) {
+        } else if ((a < 0) && (b > 0) && !negative) {
             return true;
-        } else if ((a > 0) && (b < 0) && negative == false) {
+        } else if ((a > 0) && (b < 0) && !negative) {
             return true;
         } else {
             return false;
@@ -174,7 +174,7 @@ public class Exercises {
      hasTeen(20, 10, 13) → true
      */
     public boolean hasTeen(int a, int b, int c) {
-        if (( a >= 13 && a <= 19) || (b >= 13 && b <= 19) || ( c >= 13 && c <= 19)) {
+        if ((a >= 13 && a <= 19) || (b >= 13 && b <= 19) || (c >= 13 && c <= 19)) {
             return true;
         } else {
             return false;
@@ -189,7 +189,7 @@ public class Exercises {
      loneTeen(13, 13) → false
      */
     public boolean loneTeen(int a, int b) {
-        if (( a >= 13 && a <= 19 ) ^ (b >= 13 && b <= 19)) {
+        if ((a >= 13 && a <= 19) ^ (b >= 13 && b <= 19)) {
             return true;
         } else {
             return false;
@@ -274,7 +274,7 @@ public class Exercises {
         if (!isWeekend) {
             return (cigars >= 40 && cigars <= 60);
         } else {
-            return (cigars >=40);
+            return (cigars >= 40);
         }
     }
 
@@ -363,10 +363,10 @@ public class Exercises {
      sortaSum(10, 11) → 21
      */
     public int sortaSum(int a, int b) {
-        if ((a+b) <= 19 && (a+b) >= 10) {
+        if ((a + b) <= 19 && (a + b) >= 10) {
             return 20;
         } else {
-            return (a+b);
+            return (a + b);
         }
     }
 
@@ -471,9 +471,10 @@ public class Exercises {
     public boolean less20(int n) {
         if ((n % 20) == 0) {
             return false;
-        } else if ((n+1) % 20 == 0) {
+        } else if ((n + 1) % 20 == 0) {
             return true;
-        } return (n + 2) % 20 == 0;
+        }
+        return (n + 2) % 20 == 0;
     }
 
     /*
@@ -484,9 +485,10 @@ public class Exercises {
      nearTen(19) → true
      */
     public boolean nearTen(int num) {
-        if (num % 10 <= 2 || num % 10 >= 10 - 2) {
+        if (num % 10 <= 2 || num % 10 >= 8) {
             return true;
-        } return false;
+        }
+        return false;
     }
 
     /*
@@ -500,7 +502,7 @@ public class Exercises {
         if (a >= 13 && a <= 19 || b >= 13 && b <= 19) {
             return 19;
         } else {
-            return (a+b);
+            return (a + b);
         }
     }
 
@@ -518,7 +520,8 @@ public class Exercises {
             } else if (isMorning) {
                 return isMom;
             }
-        } return false;
+        }
+        return false;
     }
 
     /*
@@ -568,10 +571,12 @@ public class Exercises {
         if (!bOk) {
             if (b > a && c > b) {
                 return true;
-            } return false;
+            }
+            return false;
         } else if (c > b) {
             return true;
-        } return false;
+        }
+        return false;
     }
 
     /*
@@ -586,10 +591,12 @@ public class Exercises {
         if (!equalOk) {
             if (a < b && b < c) {
                 return true;
-            } return false;
+            }
+            return false;
         } else if (a <= b && b <= c) {
             return true;
-        } return false;
+        }
+        return false;
     }
 
     /*
@@ -602,11 +609,14 @@ public class Exercises {
     public int loneSum(int a, int b, int c) {
         if (a == b && b == c) {
             return 0;
-        } if (a == b) {
+        }
+        if (a == b) {
             return c;
-        } if (a == c) {
+        }
+        if (a == c) {
             return b;
-        } if (b == c) {
+        }
+        if (b == c) {
             return a;
         } else {
             return a + b + c;
@@ -626,11 +636,14 @@ public class Exercises {
     public int luckySum(int a, int b, int c) {
         if (a == 13 && b == 13) {
             return 0;
-        } if (a == 13) {
+        }
+        if (a == 13) {
             return c;
-        } if (b == 13) {
+        }
+        if (b == 13) {
             return a;
-        } if (c == 13) {
+        }
+        if (c == 13) {
             return a + b;
         } else {
             return a + b + c;
