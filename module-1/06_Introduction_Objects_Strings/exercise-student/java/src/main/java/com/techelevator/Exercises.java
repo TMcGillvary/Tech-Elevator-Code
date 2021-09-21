@@ -70,6 +70,7 @@ public class Exercises {
      firstTwo("ab") → "ab"
      */
     public String firstTwo(String str) {
+
         if (str.length() < 2) {
             return str;
         } else {
