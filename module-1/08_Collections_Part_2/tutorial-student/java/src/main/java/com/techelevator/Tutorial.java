@@ -10,11 +10,24 @@ public class Tutorial {
 
         // Step One: Declare a Map
 
+        Map<String, String> projects = new HashMap<String, String>();
     	
     	// Step Two: Add items to a Map
 
-    	
+        projects.put("Ada", "Inventing Computer Programming");
+        projects.put("Grace", "COBOL");
+        projects.put("Margaret", "Apollo Guidance Computer");
+        projects.put("Adele", "Graphical User Interface");
+
+        projects.remove("Grace");
+
     	// Step Three: Loop through a Map
+
+        for ( Map.Entry<String, String> project : projects.entrySet()) {
+            String key = project.getKey();
+            String value = project.getValue();
+            System.out.println("The key " + key + " is linked to the value " + value);
+        }
 
     }
 
