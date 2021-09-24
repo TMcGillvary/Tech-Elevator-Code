@@ -60,6 +60,22 @@ public class Exercises {
         }
         return "unknown";
     }
+    /*
+    Map<String, String> animalGroupMap = new HashMap<String, String>();
+    [insert Map key-value pairs]
+
+    if (animalName == null) {
+    return "unknown";
+    }
+
+    String lowerAnimalName = animalName.toLowerCase();
+
+    if (animalGroupMap.containsKey(lowerAnimalName)) {
+    return animalGroupMap.get(lowerAnimalName);
+    } else {
+    return "unknown";
+    }
+     */
 
     /*
      * Given an String item number (a.k.a. SKU), return the discount percentage if the item is on sale.
@@ -270,7 +286,6 @@ public class Exercises {
         Set<Map.Entry<String, Integer>> inventories = bothWarehouses.entrySet();
         for (Map.Entry<String, Integer> inventory : inventories) {
             String key = inventory.getKey();
-            int value = inventory.getValue();
 
             if (remoteWarehouse.containsKey(key) && mainWarehouse.containsKey(key)) {
                 // set variables for warehouse values
@@ -278,8 +293,6 @@ public class Exercises {
                 int remoteValue = remoteWarehouse.get(key);
                 // add to consolidated inventory
                 bothWarehouses.put(key, mainValue + remoteValue);
-            } else {
-                bothWarehouses.put(key, value);
             }
         }
         return bothWarehouses;
