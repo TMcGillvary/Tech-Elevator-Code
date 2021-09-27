@@ -22,5 +22,9 @@ public class DealerApp {
             cardInDeck.setFaceUp(true);
             System.out.println(cardInDeck.toString());
         }
+
+        System.out.println();
+        int numCardsCreated = Card.getCardCounter();
+        System.out.println(numCardsCreated + " cards have been created.");
     }
 }
