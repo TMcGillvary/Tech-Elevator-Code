@@ -1,6 +1,6 @@
 package com.techelevator;
 
-public class BankAccount {
+public class BankAccount extends BankCustomer implements Accountable {
 
     private String accountHolderName;
     private String accountNumber;
@@ -26,9 +26,12 @@ public class BankAccount {
         return accountNumber;
     }
 
+    @Override
     public int getBalance() {
         return balance;
     }
+
+    // helper Methods
 
     public int deposit(int amountToDeposit) {
         balance = balance + amountToDeposit;
@@ -37,6 +40,12 @@ public class BankAccount {
 
     public int withdraw(int amountToWithdraw) {
         balance = balance - amountToWithdraw;
+        return balance;
+    }
+
+    public int transferTo(BankAccount destinationAccount, int transferAmount) {
+        balance = withdraw(transferAmount);
+        destinationAccount.deposit(transferAmount);
         return balance;
     }
 
