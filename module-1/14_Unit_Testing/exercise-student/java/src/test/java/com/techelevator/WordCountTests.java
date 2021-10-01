@@ -58,6 +58,20 @@ public class WordCountTests {
     }
 
     @Test
+    public void returns_empty_for_null() {
+        // Arrange
+        String[] words = { };
+        WordCount wordCount = new WordCount();
+        Map<String, Integer> compareMap = new HashMap<>();
+
+        // Acts
+        Map<String, Integer> actual = wordCount.getCount(words);
+
+        // Assert
+        Assert.assertEquals(compareMap.keySet(), actual.keySet());
+    }
+
+    @Test
     public void returns_a_1_b_1_c_1() {
         // Arrange
         String[] words = {"c", "b", "a"};

@@ -90,6 +90,20 @@ public class DateFashionTests {
     }
 
     @Test
+    public void returns_2_when_you_and_date_are_10() {
+        // Arrange
+        int you = 10;
+        int date = 10;
+        DateFashion dateFashion = new DateFashion();
+
+        // Acts
+        int actual = dateFashion.getATable(you, date);
+
+        // Assert
+        Assert.assertEquals(2, actual);
+    }
+
+    @Test
     public void returns_0_when_you_and_date_are_1() {
         // Arrange
         int you = 1;

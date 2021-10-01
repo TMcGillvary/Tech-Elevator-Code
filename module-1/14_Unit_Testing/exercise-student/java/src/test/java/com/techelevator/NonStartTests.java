@@ -75,4 +75,32 @@ public class NonStartTests {
         Assert.assertEquals("", actual);
     }
 
+    @Test
+    public void return_b_if_a_is_empty() {
+        // Arrange
+        String a = "";
+        String b = "hello";
+        NonStart nonStart = new NonStart();
+
+        // Acts
+        String actual = nonStart.getPartialString(a, b);
+
+        // Assert
+        Assert.assertEquals("ello", actual);
+    }
+
+    @Test
+    public void return_a_if_b_is_empty() {
+        // Arrange
+        String a = "hello";
+        String b = "";
+        NonStart nonStart = new NonStart();
+
+        // Acts
+        String actual = nonStart.getPartialString(a, b);
+
+        // Assert
+        Assert.assertEquals("ello", actual);
+    }
+
 }
