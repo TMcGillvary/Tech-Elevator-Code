@@ -23,7 +23,7 @@ public class WordCountTests {
         Map<String, Integer> actual = wordCount.getCount(words);
 
         // Assert
-        Assert.assertEquals(compareMap.keySet(), actual.keySet());
+        Assert.assertEquals(compareMap, actual);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class WordCountTests {
         Map<String, Integer> actual = wordCount.getCount(words);
 
         // Assert
-        Assert.assertEquals(compareMap.keySet(), actual.keySet());
+        Assert.assertEquals(compareMap, actual);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class WordCountTests {
         Map<String, Integer> actual = wordCount.getCount(words);
 
         // Assert
-        Assert.assertEquals(compareMap.keySet(), actual.keySet());
+        Assert.assertEquals(compareMap, actual);
     }
 
     @Test
@@ -68,7 +68,7 @@ public class WordCountTests {
         Map<String, Integer> actual = wordCount.getCount(words);
 
         // Assert
-        Assert.assertEquals(compareMap.keySet(), actual.keySet());
+        Assert.assertEquals(compareMap, actual);
     }
 
     @Test
@@ -85,7 +85,7 @@ public class WordCountTests {
         Map<String, Integer> actual = wordCount.getCount(words);
 
         // Assert
-        Assert.assertEquals(compareMap.keySet(), actual.keySet());
+        Assert.assertEquals(compareMap, actual);
     }
 
     @Test
@@ -100,7 +100,7 @@ public class WordCountTests {
         Map<String, Integer> actual = wordCount.getCount(words);
 
         // Assert
-        Assert.assertEquals(compareMap.keySet(), actual.keySet());
+        Assert.assertEquals(compareMap, actual);
     }
 
 }
