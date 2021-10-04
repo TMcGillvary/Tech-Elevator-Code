@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 public class WordSearchTests {
 
-    private static final String TEST_TEXT_FILE = "src/test/resources/dr_jekyll_mr_hyde.txt";
+    public static final String TEST_TEXT_FILE = "src/test/resources/dr_jekyll_mr_hyde.txt";
 
     private static final String OUT_FILE_PATH = "src/test/resources/out.txt";
 
