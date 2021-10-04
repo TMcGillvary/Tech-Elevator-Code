@@ -19,6 +19,10 @@ public class WordSearch {
         //creating word search
         System.out.println("What is the search word you are looking for?");
         String searchWord = scanner.nextLine();
+        if ((searchWord == null) || (searchWord.isEmpty())) {
+            System.out.println("The search word is empty, please try again");
+            System.exit(1);
+        }
 
         // creating case sensitive input
         System.out.println("Should the search be case sensitive? (Y\\N)");
