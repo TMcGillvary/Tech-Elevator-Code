@@ -54,7 +54,9 @@ public class FindAndReplace {
                 if (!inputSourceFile.exists() || !inputSourceFile.isFile()) {
                     System.out.println("Your source file doesn't work.");
                 }
-
+                if (!destinationFile.exists() || !destinationFile.isFile()) {
+                    System.out.println("Your destination file doesn't work.");
+                }
                 System.out.println("Please try again.");
             }
         }
