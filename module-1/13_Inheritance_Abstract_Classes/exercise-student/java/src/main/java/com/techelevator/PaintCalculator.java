@@ -39,28 +39,34 @@ class PaintCalculator {
                 System.out.println("[3] Triangle");
                 String shapeChoice = userInput.nextLine();
 
-                if (shapeChoice.equals("1")) {
-                    System.out.println("Enter wall height >>> ");
-                    int height = Integer.parseInt(userInput.nextLine());
-                    System.out.println("Enter wall length >>> ");
-                    int length = Integer.parseInt(userInput.nextLine());
+                switch (shapeChoice) {
+                    case "1": {
+                        System.out.println("Enter wall height >>> ");
+                        int height = Integer.parseInt(userInput.nextLine());
+                        System.out.println("Enter wall length >>> ");
+                        int length = Integer.parseInt(userInput.nextLine());
 
-                    // Step Two:
-                    newWall = new RectangleWall(name, color, height, length);
-                } else if (shapeChoice.equals("2")) {
-                    System.out.println("Enter wall side length >>> ");
-                    int sideLength = Integer.parseInt(userInput.nextLine());
+                        // Step Two:
+                        newWall = new RectangleWall(name, color, height, length);
+                        break;
+                    }
+                    case "2":
+                        System.out.println("Enter wall side length >>> ");
+                        int sideLength = Integer.parseInt(userInput.nextLine());
 
-                    // Step Three:
-                    newWall = new SquareWall(name, color, sideLength);
-                } else if (shapeChoice.equals("3")) {
-                    System.out.println("Enter wall height >>> ");
-                    int height = Integer.parseInt(userInput.nextLine());
-                    System.out.println("Enter wall base >>> ");
-                    int base = Integer.parseInt(userInput.nextLine());
+                        // Step Three:
+                        newWall = new SquareWall(name, color, sideLength);
+                        break;
+                    case "3": {
+                        System.out.println("Enter wall height >>> ");
+                        int height = Integer.parseInt(userInput.nextLine());
+                        System.out.println("Enter wall base >>> ");
+                        int base = Integer.parseInt(userInput.nextLine());
 
-                    // Step Four:
-                    newWall = new TriangleWall(name, color, height, base);
+                        // Step Four:
+                        newWall = new TriangleWall(name, color, height, base);
+                        break;
+                    }
                 }
 
                 // Step Two:
