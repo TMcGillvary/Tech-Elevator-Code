@@ -83,28 +83,30 @@ INSERT INTO interestgroup(group_name)
 VALUES ('Tango and Beyond Social Club');
 
 INSERT INTO member_group(member_id, group_id)
-VALUES (1, 1);
+VALUES (
+(SELECT member.id FROM member WHERE last_name = 'Rodriguez'), 
+(SELECT interestgroup.id FROM interestgroup WHERE group_name = 'Tarot Obsessives'));
 
 INSERT INTO member_group(member_id, group_id)
-VALUES (2, 1);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Rawlins'), (SELECT interestgroup.id FROM interestgroup WHERE group_name = 'Tarot Obsessives'));
 
 INSERT INTO member_group(member_id, group_id)
-VALUES (3, 2);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Opitz'), (SELECT interestgroup.id FROM interestgroup WHERE group_name = 'Collective Wild Ones'));
 
 INSERT INTO member_group(member_id, group_id)
-VALUES (4, 2);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Marshall'), (SELECT interestgroup.id FROM interestgroup WHERE group_name = 'Collective Wild Ones'));
 
 INSERT INTO member_group(member_id, group_id)
-VALUES (5, 3);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Chung'), (SELECT interestgroup.id FROM interestgroup WHERE group_name = 'Bald Eagle Awakenings'));
 
 INSERT INTO member_group(member_id, group_id)
-VALUES (6, 3);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Burcham'), (SELECT interestgroup.id FROM interestgroup WHERE group_name = 'Bald Eagle Awakenings'));
 
 INSERT INTO member_group(member_id, group_id)
-VALUES (7, 4);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'McDowell'), (SELECT interestgroup.id FROM interestgroup WHERE group_name = 'Tango and Beyond Social Club'));
 
 INSERT INTO member_group(member_id, group_id)
-VALUES (8, 4);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Real'), (SELECT interestgroup.id FROM interestgroup WHERE group_name = 'Tango and Beyond Social Club'));
 
 INSERT INTO event(name, description, start_date_time, duration, event_organizer)
 VALUES ('Oh How Come Factor', 'A deep dive into the reasons why we ditch party invites', '2021-11-01 2:30 PM', '1h', 1);
@@ -122,52 +124,52 @@ INSERT INTO event(name, description, start_date_time, duration, event_organizer)
 VALUES ('Original Wonder Ranch', 'Sit with our true crime panelists and discover what happened to the OG wonder ranch', '2021-10-31 8:00 PM', '3h 45m', 4);
 
 INSERT INTO member_event_list(member_id, event_id)
-VALUES (1, 1);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Rodriguez'), (SELECT event.id FROM event WHERE event.name = 'Oh How Come Factor'));
 
 INSERT INTO member_event_list(member_id, event_id)
-VALUES (2, 1);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Rawlins'), (SELECT event.id FROM event WHERE event.name = 'Oh How Come Factor'));
 
 INSERT INTO member_event_list(member_id, event_id)
-VALUES (3, 2);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Opitz'), (SELECT event.id FROM event WHERE event.name = 'Checklist Time'));
 
 INSERT INTO member_event_list(member_id, event_id)
-VALUES (4, 2);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Marshall'), (SELECT event.id FROM event WHERE event.name = 'Checklist Time'));
 
 INSERT INTO member_event_list(member_id, event_id)
-VALUES (5, 3);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Chung'), (SELECT event.id FROM event WHERE event.name = 'Oui Fiesta'));
 
 INSERT INTO member_event_list(member_id, event_id)
-VALUES (6, 3);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Burcham'), (SELECT event.id FROM event WHERE event.name = 'Oui Fiesta'));
 
 INSERT INTO member_event_list(member_id, event_id)
-VALUES (7, 4);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'McDowell'), (SELECT event.id FROM event WHERE event.name = 'ShoNuf Corner'));
 
 INSERT INTO member_event_list(member_id, event_id)
-VALUES (8, 4);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Real'), (SELECT event.id FROM event WHERE event.name = 'ShoNuf Corner'));
 
 INSERT INTO member_event_list(member_id, event_id)
-VALUES (1, 5);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Rodriguez'), (SELECT event.id FROM event WHERE event.name = 'Original Wonder Ranch'));
 
 INSERT INTO member_event_list(member_id, event_id)
-VALUES (2, 5);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Rawlins'), (SELECT event.id FROM event WHERE event.name = 'Original Wonder Ranch'));
 
 INSERT INTO member_event_list(member_id, event_id)
-VALUES (3, 5);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Opitz'), (SELECT event.id FROM event WHERE event.name = 'Original Wonder Ranch'));
 
 INSERT INTO member_event_list(member_id, event_id)
-VALUES (4, 5);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Marshall'), (SELECT event.id FROM event WHERE event.name = 'Original Wonder Ranch'));
 
 INSERT INTO member_event_list(member_id, event_id)
-VALUES (5, 5);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Chung'), (SELECT event.id FROM event WHERE event.name = 'Original Wonder Ranch'));
 
 INSERT INTO member_event_list(member_id, event_id)
-VALUES (6, 5);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Burcham'), (SELECT event.id FROM event WHERE event.name = 'Original Wonder Ranch'));
 
 INSERT INTO member_event_list(member_id, event_id)
-VALUES (7, 5);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'McDowell'), (SELECT event.id FROM event WHERE event.name = 'Original Wonder Ranch'));
 
 INSERT INTO member_event_list(member_id, event_id)
-VALUES (8, 5);
+VALUES ((SELECT member.id FROM member WHERE last_name = 'Real'), (SELECT event.id FROM event WHERE event.name = 'Original Wonder Ranch'));
 
 COMMIT;
 
