@@ -185,7 +185,7 @@ JOIN member ON member_group.member_id = member.id
 JOIN interestgroup ON member_group.group_id = interestgroup.id;
 
 SELECT event.id, event.name, event.description, 
-to_char(event.start_date_time, 'MM-DD-YYYY HH12:MI PM') AS start_date_time, 
+to_char(event.start_date_time, 'MM-DD-YYYY HH12:MI PM') AS start_date_time, -- just doing this for output sake i know you shouldn't format in the actual database :)
 event.duration, interestgroup.group_name AS event_organizer
 FROM event
 JOIN interestgroup ON event.event_organizer = interestgroup.id;
