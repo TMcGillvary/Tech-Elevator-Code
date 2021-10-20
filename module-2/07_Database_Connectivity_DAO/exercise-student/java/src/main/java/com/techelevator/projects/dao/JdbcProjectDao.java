@@ -20,31 +20,16 @@ public class JdbcProjectDao implements ProjectDao {
 
     @Override
     public Project getProject(Long projectId) {
-        Project project = new Project();
+        Project project = null;
 
         String projectSql = "SELECT project_id, name, from_date, to_date FROM project"
                 + " WHERE project_id = ?";
         SqlRowSet projectsRowSet = this.jdbcTemplate.queryForRowSet(projectSql, projectId);
 
         if (projectsRowSet.next()) {
-            project.setId(projectsRowSet.getLong("project_id"));
-            project.setName(projectsRowSet.getString("name"));
-
-            if (projectsRowSet.getDate("from_date") == null) {
-                project.setFromDate(null);
-            } else {
-                project.setFromDate(projectsRowSet.getDate("from_date").toLocalDate());
-            }
-
-            if (projectsRowSet.getDate("to_date") == null) {
-                project.setToDate(null);
-            } else {
-                project.setToDate(projectsRowSet.getDate("to_date").toLocalDate());
-            }
-
-            return project;
+            project = mapRowToProject(projectsRowSet);
         }
-        return null;
+        return project;
     }
 
     @Override
@@ -55,24 +40,9 @@ public class JdbcProjectDao implements ProjectDao {
         SqlRowSet projectRowSet = this.jdbcTemplate.queryForRowSet(projectListSql);
 
         while (projectRowSet.next()) {
-            Project project = new Project();
-            project.setId(projectRowSet.getLong("project_id"));
-            project.setName(projectRowSet.getString("name"));
-
-            if (projectRowSet.getDate("from_date") == null) {
-                project.setFromDate(null);
-            } else {
-                project.setFromDate(projectRowSet.getDate("from_date").toLocalDate());
-            }
-
-            if (projectRowSet.getDate("to_date") == null) {
-                project.setToDate(null);
-            } else {
-                project.setToDate(projectRowSet.getDate("to_date").toLocalDate());
-            }
-
-            projects.add(project);
+            projects.add(mapRowToProject(projectRowSet));
         }
+
         return projects;
     }
 
@@ -94,6 +64,27 @@ public class JdbcProjectDao implements ProjectDao {
         jdbcTemplate.update(deleteProjectSql1, projectId);
         jdbcTemplate.update(deleteProjectSql2, projectId);
 
+    }
+
+    private Project mapRowToProject(SqlRowSet rowSet) {
+        Project project = new Project();
+
+        project.setId(rowSet.getLong("project_id"));
+        project.setName(rowSet.getString("name"));
+
+        if (rowSet.getDate("from_date") == null) {
+            project.setFromDate(null);
+        } else {
+            project.setFromDate(rowSet.getDate("from_date").toLocalDate());
+        }
+
+        if (rowSet.getDate("to_date") == null) {
+            project.setToDate(null);
+        } else {
+            project.setToDate(rowSet.getDate("to_date").toLocalDate());
+        }
+
+        return project;
     }
 
 

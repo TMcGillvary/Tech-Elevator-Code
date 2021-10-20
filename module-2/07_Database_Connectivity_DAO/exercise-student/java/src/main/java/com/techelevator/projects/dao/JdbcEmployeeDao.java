@@ -27,15 +27,7 @@ public class JdbcEmployeeDao implements EmployeeDao {
         SqlRowSet employeeRowSet = this.jdbcTemplate.queryForRowSet(employeeListSql);
 
         while (employeeRowSet.next()) {
-            Employee employee = new Employee();
-            employee.setId(employeeRowSet.getLong("employee_id"));
-            employee.setDepartmentId(employeeRowSet.getLong("department_id"));
-            employee.setFirstName(employeeRowSet.getString("first_name"));
-            employee.setLastName(employeeRowSet.getString("last_name"));
-            employee.setBirthDate(employeeRowSet.getDate("birth_date").toLocalDate());
-            employee.setHireDate(employeeRowSet.getDate("hire_date").toLocalDate());
-
-            employees.add(employee);
+            employees.add(mapRowToEmployee(employeeRowSet));
         }
         return employees;
     }
@@ -51,16 +43,7 @@ public class JdbcEmployeeDao implements EmployeeDao {
             SqlRowSet employeeNames = this.jdbcTemplate.queryForRowSet(employeeNameSearchSql, firstNameSearch, lastNameSearch);
 
             while (employeeNames.next()) {
-                Employee employee = new Employee();
-                employee.setId(employeeNames.getLong("employee_id"));
-                employee.setDepartmentId(employeeNames.getLong("department_id"));
-                employee.setFirstName(employeeNames.getString("first_name"));
-                employee.setLastName(employeeNames.getString("last_name"));
-                employee.setBirthDate(employeeNames.getDate("birth_date").toLocalDate());
-                employee.setHireDate(employeeNames.getDate("hire_date").toLocalDate());
-
-                employees.add(employee);
-
+                employees.add(mapRowToEmployee(employeeNames));
             }
             return employees;
 
@@ -79,15 +62,7 @@ public class JdbcEmployeeDao implements EmployeeDao {
         SqlRowSet rowSet = this.jdbcTemplate.queryForRowSet(employeeProjectIdSql, projectId);
 
         while (rowSet.next()) {
-            Employee employee = new Employee();
-            employee.setId(rowSet.getLong("employee_id"));
-            employee.setDepartmentId(rowSet.getLong("department_id"));
-            employee.setFirstName(rowSet.getString("first_name"));
-            employee.setLastName(rowSet.getString("last_name"));
-            employee.setBirthDate(rowSet.getDate("birth_date").toLocalDate());
-            employee.setHireDate(rowSet.getDate("hire_date").toLocalDate());
-
-            employees.add(employee);
+            employees.add(mapRowToEmployee(rowSet));
         }
         return employees;
     }
@@ -117,17 +92,21 @@ public class JdbcEmployeeDao implements EmployeeDao {
         SqlRowSet employeeRowSet = this.jdbcTemplate.queryForRowSet(employeeListSql);
 
         while (employeeRowSet.next()) {
-            Employee employee = new Employee();
-            employee.setId(employeeRowSet.getLong("employee_id"));
-            employee.setDepartmentId(employeeRowSet.getLong("department_id"));
-            employee.setFirstName(employeeRowSet.getString("first_name"));
-            employee.setLastName(employeeRowSet.getString("last_name"));
-            employee.setBirthDate(employeeRowSet.getDate("birth_date").toLocalDate());
-            employee.setHireDate(employeeRowSet.getDate("hire_date").toLocalDate());
-
-            employees.add(employee);
+            employees.add(mapRowToEmployee(employeeRowSet));
         }
         return employees;
+    }
+
+
+    private Employee mapRowToEmployee(SqlRowSet rowSet) {
+        Employee employee = new Employee();
+        employee.setId(rowSet.getLong("employee_id"));
+        employee.setDepartmentId(rowSet.getLong("department_id"));
+        employee.setFirstName(rowSet.getString("first_name"));
+        employee.setLastName(rowSet.getString("last_name"));
+        employee.setBirthDate(rowSet.getDate("birth_date").toLocalDate());
+        employee.setHireDate(rowSet.getDate("hire_date").toLocalDate());
+        return employee;
     }
 
 

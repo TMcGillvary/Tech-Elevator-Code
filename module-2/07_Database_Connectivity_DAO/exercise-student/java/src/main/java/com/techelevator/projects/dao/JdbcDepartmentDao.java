@@ -20,17 +20,15 @@ public class JdbcDepartmentDao implements DepartmentDao {
 
     @Override
     public Department getDepartment(Long id) {
-        Department department = new Department();
+        Department department = null;
 
         String sql = "SELECT department_id, name FROM department WHERE department_id = ?;";
         SqlRowSet departmentRowSet = this.jdbcTemplate.queryForRowSet(sql, id);
 
         if (departmentRowSet.next()) {
-            department.setId(departmentRowSet.getLong("department_id"));
-            department.setName(departmentRowSet.getString("name"));
-            return department;
+            department = mapRowToDepartment(departmentRowSet);
         }
-        return null;
+        return department;
     }
 
     @Override
@@ -41,10 +39,7 @@ public class JdbcDepartmentDao implements DepartmentDao {
         SqlRowSet departmentRowSet = this.jdbcTemplate.queryForRowSet(departmentListSql);
 
         while (departmentRowSet.next()) {
-            Department department = new Department();
-            department.setId(departmentRowSet.getLong("department_id"));
-            department.setName(departmentRowSet.getString("name"));
-            departments.add(department);
+            departments.add(mapRowToDepartment(departmentRowSet));
         }
 
         return departments;
@@ -54,6 +49,13 @@ public class JdbcDepartmentDao implements DepartmentDao {
     public void updateDepartment(Department updatedDepartment) {
         String deptUpdateSql = "UPDATE department SET name = ? WHERE department_id = ?;";
         jdbcTemplate.update(deptUpdateSql, updatedDepartment.getName(), updatedDepartment.getId());
+    }
+
+    private Department mapRowToDepartment(SqlRowSet rowSet) {
+        Department department = new Department();
+        department.setId(rowSet.getLong("department_id"));
+        department.setName(rowSet.getString("name"));
+        return department;
     }
 
 }
