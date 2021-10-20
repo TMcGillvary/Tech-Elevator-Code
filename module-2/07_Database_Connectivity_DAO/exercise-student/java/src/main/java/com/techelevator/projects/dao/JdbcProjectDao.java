@@ -1,5 +1,6 @@
 package com.techelevator.projects.dao;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,20 +69,22 @@ public class JdbcProjectDao implements ProjectDao {
 
     private Project mapRowToProject(SqlRowSet rowSet) {
         Project project = new Project();
+        Date projectFromDate = rowSet.getDate("from_date");
+        Date projectToDate = rowSet.getDate("to_date");
 
         project.setId(rowSet.getLong("project_id"));
         project.setName(rowSet.getString("name"));
 
-        if (rowSet.getDate("from_date") == null) {
+        if (projectFromDate == null) {
             project.setFromDate(null);
         } else {
-            project.setFromDate(rowSet.getDate("from_date").toLocalDate());
+            project.setFromDate(projectFromDate.toLocalDate());
         }
 
-        if (rowSet.getDate("to_date") == null) {
+        if (projectToDate == null) {
             project.setToDate(null);
         } else {
-            project.setToDate(rowSet.getDate("to_date").toLocalDate());
+            project.setToDate(projectToDate.toLocalDate());
         }
 
         return project;

@@ -42,6 +42,11 @@ public class JdbcEmployeeDao implements EmployeeDao {
                     + " WHERE first_name ILIKE concat('%', ?, '%') AND last_name ILIKE concat('%', ?, '%') ;";
             SqlRowSet employeeNames = this.jdbcTemplate.queryForRowSet(employeeNameSearchSql, firstNameSearch, lastNameSearch);
 
+            // could also do
+            // String firstNameWildcardSearch = "%" + firstNameSearch + "%";
+            // String lastNameWildcardSearch = "%" + lastNameSearch + "%";
+            // and pass those in with ILIKE ? instead
+
             while (employeeNames.next()) {
                 employees.add(mapRowToEmployee(employeeNames));
             }
