@@ -1,43 +1,63 @@
 Bug 1
 -----
 Test that demonstrates problem:
+getTimesheetsByEmployeeId_returns_list_of_all_timesheets_for_employee()
 
 Expected output:
+timesheetList.size() returns 2 after calling the getTimesheetsByEmployeeId() method for employeeID 1L
 
 Actual output:
+timesheetList.size() only returns 1
 
 How did you fix this bug?
+Typo in code if (results.next()), replaced with while (results.next())
+Test now runs as expected
 
 
 Bug 2
 -----
 Test that demonstrates problem:
+getTimesheetsByProjectId_returns_list_of_all_timesheets_for_project()
 
 Expected output:
+timesheetList.size() returns 3 after calling getTimesheetsByProjectId(1L)
 
 Actual output:
+timesheetList.size() only returns 2
 
 How did you fix this bug?
+Typo in SQL statement "WHERE employee_id = ?", replaced employee_id with project_id
+Test now runs as expected
 
 
 Bug 3
 -----
 Test that demonstrates problem:
+updated_timesheet_has_expected_values_when_retrieved()
 
 Expected output:
+Timesheet 4L would be updated with the new values
 
 Actual output:
+Billable is not updated from false to true when method is run
 
 How did you fix this bug?
-
+Billable is missing from updateTimesheet() method. Added billable to method
+Code now runs as expected
 
 Bug 4
 -----
 Test that demonstrates problem:
+getBillableHours_returns_correct_total()
 
 Expected output:
+Employee 2L and Project 2L returns 0 as hours worked are not billable
 
 Actual output:
+getBillableHours outputs 2.0 hours billed
 
 How did you fix this bug?
+billable = true missing from WHERE clause, added into code
+Code now runs as expected
+
 
