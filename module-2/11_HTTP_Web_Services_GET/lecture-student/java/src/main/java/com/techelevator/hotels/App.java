@@ -30,14 +30,17 @@ public class App {
                 Review[] reviews = hotelService.listReviews();
                 consoleService.printReviews(reviews);
             } else if (menuSelection == 3) {
-                System.out.println("Not implemented");
+                //System.out.println("Not implemented");
+                consoleService.printHotel(hotelService.getHotelById(1));
             } else if (menuSelection == 4) {
                 //System.out.println("Not implemented");
                 consoleService.printReviews(hotelService.getReviewsByHotelId(1));
             } else if (menuSelection == 5) {
-                System.out.println("Not implemented");
+                //System.out.println("Not implemented");
+                consoleService.printHotels(hotelService.getHotelsByStarRating(3));
             } else if (menuSelection == 6) {
-                System.out.println("Not implemented - Create a custom Web API query here");
+                //System.out.println("Not implemented - Create a custom Web API query here");
+                consoleService.printCity(hotelService.getWithCustomQuery());
             } else if (menuSelection == 0) {
                 continue;
             } else {
