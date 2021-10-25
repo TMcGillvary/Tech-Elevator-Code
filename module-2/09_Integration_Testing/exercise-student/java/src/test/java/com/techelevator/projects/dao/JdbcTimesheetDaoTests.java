@@ -94,6 +94,8 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
         Timesheet expected = sut.createTimesheet(fakeTimesheet);
         Timesheet actual = sut.getTimesheet(expected.getTimesheetId());
 
+        System.out.println();
+
         // Assert
         assertTimesheetsMatch(expected, actual);
     }

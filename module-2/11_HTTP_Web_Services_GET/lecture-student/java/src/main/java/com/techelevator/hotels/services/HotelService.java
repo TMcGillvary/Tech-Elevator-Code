@@ -3,6 +3,7 @@ package com.techelevator.hotels.services;
 import com.techelevator.hotels.model.City;
 import com.techelevator.hotels.model.Hotel;
 import com.techelevator.hotels.model.Review;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 public class HotelService {
@@ -11,11 +12,16 @@ public class HotelService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public Hotel[] listHotels() {
-        return null;
+        String url = API_BASE_URL + "hotels";
+        ResponseEntity<Hotel[]> responseEntity = restTemplate.getForEntity(url, Hotel[].class);
+        System.out.println(responseEntity.getStatusCode());
+        return responseEntity.getBody();
     }
 
     public Review[] listReviews() {
-        return null;
+        String url = API_BASE_URL + "reviews";
+        Review[] reviews = restTemplate.getForObject(url, Review[].class);
+        return reviews;
     }
 
     public Hotel getHotelById(int id) {
@@ -23,7 +29,8 @@ public class HotelService {
     }
 
     public Review[] getReviewsByHotelId(int hotelID) {
-        return null;
+        String url = API_BASE_URL + "hotels/" + hotelID + "/reviews";
+        return restTemplate.getForObject(url, Review[].class);
     }
 
     public Hotel[] getHotelsByStarRating(int stars) {

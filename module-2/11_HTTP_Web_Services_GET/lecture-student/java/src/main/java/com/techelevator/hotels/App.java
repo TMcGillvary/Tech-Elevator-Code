@@ -1,5 +1,7 @@
 package com.techelevator.hotels;
 
+import com.techelevator.hotels.model.Hotel;
+import com.techelevator.hotels.model.Review;
 import com.techelevator.hotels.services.ConsoleService;
 import com.techelevator.hotels.services.HotelService;
 
@@ -20,13 +22,18 @@ public class App {
             consoleService.printMainMenu();
             menuSelection = consoleService.promptForMenuSelection();
             if (menuSelection == 1) {
-                System.out.println("Not implemented");
+                //System.out.println("Not implemented");
+                Hotel[] hotels = hotelService.listHotels();
+                consoleService.printHotels(hotels);
             } else if (menuSelection == 2) {
-                System.out.println("Not implemented");
+                //System.out.println("Not implemented");
+                Review[] reviews = hotelService.listReviews();
+                consoleService.printReviews(reviews);
             } else if (menuSelection == 3) {
                 System.out.println("Not implemented");
             } else if (menuSelection == 4) {
-                System.out.println("Not implemented");
+                //System.out.println("Not implemented");
+                consoleService.printReviews(hotelService.getReviewsByHotelId(1));
             } else if (menuSelection == 5) {
                 System.out.println("Not implemented");
             } else if (menuSelection == 6) {
