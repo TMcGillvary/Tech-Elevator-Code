@@ -3,6 +3,9 @@ package com.techelevator.hotels.services;
 import com.techelevator.hotels.model.Hotel;
 import com.techelevator.hotels.model.Reservation;
 import com.techelevator.util.BasicLogger;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
@@ -17,7 +20,17 @@ public class HotelService {
      * Create a new reservation in the hotel reservation system
      */
     public Reservation addReservation(Reservation newReservation) {
-        // TODO: Implement method
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        try {
+            HttpEntity<Reservation> httpEntity = new HttpEntity<Reservation>(newReservation, headers);
+            return restTemplate.postForObject(API_BASE_URL + "reservations/", httpEntity, Reservation.class);
+        } catch (RestClientResponseException e) {
+            BasicLogger.log("Client error adding reservation " + e.getRawStatusCode() + " : " + e.getStatusText());
+        } catch (ResourceAccessException e) {
+            BasicLogger.log("I/O Error adding reservation " + e.getMessage());
+        }
         return null;
     }
 
@@ -27,6 +40,19 @@ public class HotelService {
      */
     public boolean updateReservation(Reservation updatedReservation) {
         // TODO: Implement method
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        try {
+            HttpEntity<Reservation> httpEntity = new HttpEntity<Reservation>(updatedReservation, headers);
+            String url = API_BASE_URL + "reservations/" + updatedReservation.getId();
+            restTemplate.put(url, httpEntity);
+            return true;
+        } catch (RestClientResponseException e) {
+            BasicLogger.log("Client error updating reservation " + e.getRawStatusCode() + " : " + e.getStatusText());
+        } catch (ResourceAccessException e) {
+            BasicLogger.log("I/O Error updating reservation " + e.getMessage());
+        }
         return false;
     }
 

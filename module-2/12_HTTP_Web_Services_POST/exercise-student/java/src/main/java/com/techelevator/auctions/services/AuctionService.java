@@ -18,16 +18,45 @@ public class AuctionService {
 
     public Auction add(Auction newAuction) {
         // place code here
+
+        try {
+            HttpEntity<Auction> httpEntity = makeEntity(newAuction);
+            return restTemplate.postForObject(API_BASE_URL, httpEntity, Auction.class);
+        } catch (RestClientResponseException e) {
+            BasicLogger.log("Client error adding auction " + e.getRawStatusCode() + " : " + e.getStatusText());
+        } catch (ResourceAccessException e) {
+            BasicLogger.log("I/O Error adding auction " + e.getMessage());
+        }
         return null;
     }
 
     public boolean update(Auction updatedAuction) {
         // place code here
+        String url = API_BASE_URL + updatedAuction.getId();
+
+        try {
+            HttpEntity<Auction> httpEntity = makeEntity(updatedAuction);
+            restTemplate.put(url, httpEntity);
+            return true;
+        } catch (RestClientResponseException e) {
+            BasicLogger.log("Client error updating auction " + e.getRawStatusCode() + " : " + e.getStatusText());
+        } catch (ResourceAccessException e) {
+            BasicLogger.log("I/O Error updating auction " + e.getMessage());
+        }
         return false;
     }
 
     public boolean delete(int auctionId) {
         // place code here
+
+        try {
+            restTemplate.delete(API_BASE_URL + auctionId);
+            return true;
+        } catch (RestClientResponseException e) {
+            BasicLogger.log("Client error deleting auction " + e.getRawStatusCode() + " : " + e.getStatusText());
+        } catch (ResourceAccessException e) {
+            BasicLogger.log("I/O Error deleting auction " + e.getMessage());
+        }
         return false;
     }
 
