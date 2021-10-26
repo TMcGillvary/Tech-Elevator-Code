@@ -61,6 +61,14 @@ public class HotelService {
      */
     public boolean deleteReservation(int id) {
         // TODO: Implement method
+        try {
+            restTemplate.delete(API_BASE_URL + id);
+            return true;
+        } catch (RestClientResponseException e) {
+            BasicLogger.log("Client error deleting reservation " + e.getRawStatusCode() + " : " + e.getStatusText());
+        } catch (ResourceAccessException e) {
+            BasicLogger.log("I/O Error deleting reservation " + e.getMessage());
+        }
         return false;
     }
 
