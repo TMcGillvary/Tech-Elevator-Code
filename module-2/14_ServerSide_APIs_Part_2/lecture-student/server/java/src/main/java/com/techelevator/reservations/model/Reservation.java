@@ -1,12 +1,23 @@
 package com.techelevator.reservations.model;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+
 public class Reservation {
 
     private int id;
     private int hotelID;
+
+    @NotBlank(message = "Full name must not be blank")
+    @Size(min = 3, max = 50, message = "Full name must be between 3 and 50 characters")
     private String fullName;
+
     private String checkinDate;
     private String checkoutDate;
+
+    @Size(message = "Number of guests must be greater than zero") // default is zero
+    // CTRL + SPACEBAR to bring up all of the options to see what can go in a field
     private int guests;
 
     public Reservation(int id, int hotelID, String fullName, String checkinDate, String checkoutDate, int guests) {
