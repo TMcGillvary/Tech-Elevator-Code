@@ -33,9 +33,10 @@ public class LocationController {
         return dao.get(id);
     }
 
+    @ApiOperation("Adds a new location to the system")
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public Location add(@Valid @RequestBody Location location) {
+    public Location add(@Valid @RequestBody @ApiParam("the location to add") Location location) {
         return dao.create(location);
     }
 
