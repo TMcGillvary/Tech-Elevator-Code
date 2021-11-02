@@ -18,13 +18,26 @@ public class JdbcPostDao implements PostDao {
 	@Override
 	public void save(Post newPost) {
 		// Implement this method to save post to database
+		String savePostSql = "INSERT INTO posts (name, body, published, created) "
+				+ " VALUES (?, ?, ?, ?)";
+		jdbcTemplate.update(savePostSql, newPost.getName(),
+				newPost.getBody(), newPost.isPublished(), newPost.getCreated());
 	}
 
 	@Override
 	public List<Post> getAllPosts() {
 		// Implement this method to pull in all posts from database
+		List<Post> posts = new ArrayList<Post>();
 
-		return null;
+		String sql = "SELECT posts.id, posts.name, posts.body, posts.published, posts.created "
+				+ " FROM posts;";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+		while (results.next()) {
+			posts.add(mapRowToPost(results));
+		}
+
+		return posts;
 	}
 
 	private Post mapRowToPost(SqlRowSet results) {
@@ -33,7 +46,14 @@ public class JdbcPostDao implements PostDao {
 		postRow.setName(results.getString("name"));
 		postRow.setBody(results.getString("body"));
 		postRow.setPublished(results.getBoolean("published"));
-		postRow.setCreated(results.getDate("created").toLocalDate());
+
+		Date createdDate = results.getDate("created");
+		if (createdDate == null) {
+			postRow.setCreated(null);
+		} else {
+			postRow.setCreated(createdDate.toLocalDate());
+		}
+
 		return postRow;
 	}
 
