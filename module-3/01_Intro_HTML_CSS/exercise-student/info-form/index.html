@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" />
+    <title>Info Form</title>
+</head>
+
+<body>
+    <header>
+        <h1>Info Form</h1>
+    </header>
+
+    <nav>
+        <a href="fan-page/index.html">Back to Fan Page</a>
+    </nav>
+
+    <main>
+        <form action="http://www.example.com/info" method="POST">
+            <div>
+                <label for="Name">Name:</label>
+                <input id="Name" name="Name" type="text" />
+            </div>
+            <div>
+                <label for="Email">Email:</label>
+                <input id="Email" name="Email" type="text" />
+            </div>
+            <div>
+                <label for="Date">Date of Birth:</label>
+                <input id="Date" name="Date" type="date" />
+            </div>
+            <div>
+                <label for="Color">Favorite Color:</label>
+                <input id="Color" name="Color" type="color" />
+            </div>
+            <div>
+                <label for="Num">Favorite Number:</label>
+                <input id="Num" name="Num" type="number" />
+            </div>
+            <div class="submit">
+                <input id="Confirm" name="Confirm" type="checkbox" />
+                <label for="Confirm">This Info Is Accurate</label>
+                <br />
+                <input type="submit" />
+            </div>
+        </form>
+    </main>
+</body>
+
+</html>

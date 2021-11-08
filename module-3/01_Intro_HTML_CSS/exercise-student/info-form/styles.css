@@ -1,0 +1,25 @@
+body {
+    background-color: #ffeeed;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+}
+
+h1 {
+    text-align: center;
+    color: #50342b;
+    text-decoration: underline;
+    font-size: 55px;
+}
+
+main {
+    margin-top: 20px;
+}
+
+div {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.submit {
+    text-align: center;
+}

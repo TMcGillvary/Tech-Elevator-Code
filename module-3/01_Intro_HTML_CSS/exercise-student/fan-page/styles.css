@@ -1,0 +1,36 @@
+body {
+    background-color: #ffeeed;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    color: #50342b;
+    text-decoration: underline;
+}
+
+table {
+    margin: auto;
+    text-align: center;
+    width: 500px;
+}
+
+table th {
+    text-decoration: underline;
+}
+
+.quotes p {
+    margin-left: 50px;
+    font-style: italic;
+}
+
+nav {
+    line-height: 160%;
+}
