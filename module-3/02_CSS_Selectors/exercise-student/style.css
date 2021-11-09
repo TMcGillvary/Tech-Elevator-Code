@@ -15,3 +15,82 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+aside {
+  position: fixed;
+  border-right: 1px solid rgba(0, 173, 238, 0.4);
+  height: 100vh;
+  width: 200px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+aside img {
+  display: block;
+  height: 120px;
+  margin: 0 auto;
+}
+
+nav li {
+  list-style: none;
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(0, 173, 238, 0.4);
+  margin: 10px auto;
+  padding-bottom: 10px;
+  width: 80%;
+  line-height: 2;
+}
+
+nav li a {
+  font-weight: bold;
+  color: #00ADEE;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  text-decoration: underline;
+}
+
+main {
+  margin-left: 200px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+header {
+  height: 120px;
+}
+
+header img {
+  height: 80%;
+}
+
+main .banner {
+  display: block;
+  width: 100%;
+}
+
+section div {
+  display: inline-block;
+  width: 33%;
+  margin-top: 20px;
+  padding-right: 20px;
+  vertical-align: top;
+}
+
+section h2 {
+  color: #8CC36F;
+}
+
+section h2 i {
+  margin-right: 10px;
+}
+
+section div:not(div:last-child) {
+  border-right: 1px solid rgba(170, 239, 135, 0.8);
+}
+
+section div:not(div:first-child) {
+  padding-left: 20px;
+}
