@@ -31,7 +31,7 @@ aside img {
   margin: 0 auto;
 }
 
-nav li {
+aside > nav > ul > li {
   list-style: none;
   text-align: center;
   text-transform: uppercase;

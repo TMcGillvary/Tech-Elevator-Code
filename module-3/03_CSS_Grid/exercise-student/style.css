@@ -50,3 +50,132 @@ header img {
 #student-picture img{
     border-radius: 50%;
 }
+
+/*************************
+   Grid & Grid Styling
+*************************/
+
+/* Grid Areas */
+#headline {
+    grid-area: main-head;
+}
+
+#student-picture {
+    grid-area: main-student-pic;
+    text-align: center;
+}
+
+#student-quote {
+    grid-area: main-student-q;
+}
+
+#student-profile {
+    grid-area: main-student-pf;
+}
+
+#student-contact {
+    grid-area: main-student-contact;
+    text-align: center;
+}
+
+#experience-grid {
+    grid-area: main-exp-grid;
+}
+
+#experience-code {
+    grid-area: exp-code;
+}
+
+#experience-database {
+    grid-area: exp-db;
+}
+
+#experience-web {
+    grid-area: exp-web;
+}
+
+#experience-design {
+    grid-area: exp-design;
+}
+
+/* Grid Layout */
+
+#main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+    row-gap: 20px;
+    align-items: center;
+    grid-template-areas:
+        "main-head main-head main-student-pic"
+        "main-student-q main-student-q main-student-pic"
+        "main-student-pf main-student-pf main-student-contact"
+        "main-exp-grid main-exp-grid main-exp-grid";
+}
+
+#experience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    row-gap: 20px;
+    grid-template-areas: 
+        "exp-code exp-code"
+        "exp-db exp-db"
+        "exp-web exp-design";
+}
+
+/* Tablet Layout */
+@media screen and (max-width: 1024px) {
+
+    #main-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+        grid-template-areas: 
+            "main-head main-head"
+            "main-student-q main-student-pic"
+            "main-student-q main-student-contact"
+            "main-student-pf main-student-pf"
+            "main-exp-grid main-exp-grid";
+    }
+
+    #experience-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        row-gap: 20px;
+        grid-template-areas: 
+            "exp-code exp-web"
+            "exp-db exp-design";
+    }
+
+}
+
+
+/* Phone Layout */
+@media screen and (max-width: 450px) {
+
+    #main-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "main-head"
+            "main-student-pic"
+            "main-student-contact"
+            "main-student-q"
+            "main-student-pf"
+            "main-exp-grid";
+    }
+
+    #experience-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+        grid-template-areas: 
+            "exp-code"
+            "exp-web"
+            "exp-db"
+            "exp-design";
+    }
+
+}
