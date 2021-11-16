@@ -26,7 +26,12 @@ function printToConsole(value) {
  *
  * @param {number} firstParameter the first parameter to multiply
  * @param {number} secondParameter the second parameter to multiply
+ * @returns {number} The values multiplied togethe
  */
+
+function multiplyTogether(firstParameter, secondParameter) {
+  return firstParameter * secondParameter;
+}
 
 /**
  * This version makes sure that no parameters are ever missing. If
@@ -40,7 +45,15 @@ function printToConsole(value) {
  */
 
 
- 
+function arrayDoubler(arrToDouble) {
+  return arrToDouble.map(value => value * 2);
+}
+
+function evensOnly(arrToFilter) {
+  return arrToFilter.filter(value => value % 2 === 0);
+}
+
+
 /**
  * Functions can return earlier before the end of the function. This could be useful
  * in circumstances where you may not need to perform additional instructions or have to
@@ -92,6 +105,10 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
   return description + listOfQuirks.join(separator);
 }
 
+function sum(previousValue, currentValue) {
+  return previousValue + currentValue;
+}
+
 /**
  * Takes an array and, using the power of anonymous functions, generates
  * their sum.
@@ -100,7 +117,7 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @returns {number} sum of all the numbers
  */
 function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+  return numbersToSum.reduce(sum);
 }
 
 /**
@@ -111,4 +128,4 @@ function sumAllNumbers(numbersToSum) {
  * @returns {number[]} a new array with only those numbers that are
  *   multiples of 3
  */
-function allDivisibleByThree(numbersToFilter) {}
+function allDivisibleByThree(numbersToFilter) { }
