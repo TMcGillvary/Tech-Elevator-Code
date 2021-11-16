@@ -10,8 +10,15 @@
  */
 function variables() {
   // Declares a variable where the value cannot be changed
+  const DAYS_IN_WEEK = 7;
   // Declares a variable those value can be changed
+  let num = 5;
+  console.log(num);
   // Declares a variable that will always be an array
+  const myArray = [];
+  myArray.push(5);
+  //myArray = "hello";
+  console.log(myArray);
 }
 
 /**
@@ -74,8 +81,10 @@ function objects() {
   };
 
   // Log the object
+  console.table(person);
 
   // Log the first and last name
+  console.log(`${person.firstName} ${person.lastName}`)
 
   // Log each employee
 }
