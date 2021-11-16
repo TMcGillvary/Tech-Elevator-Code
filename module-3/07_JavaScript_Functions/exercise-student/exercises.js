@@ -144,8 +144,8 @@ function getFullAddressesOfProperties(objectArray) {
  * A function that finds the largest element in an array, whether it is an array
  * of strings or an array of numbers.
  * 
- * @param {any[]} array an array of strings or numbers
- * @returns {array[]} returns the largest element in the array
+ * @param {[]} array an array of strings or numbers
+ * @returns {element} returns the largest element in the array
  */
 
 function findLargest(array) {
@@ -177,3 +177,26 @@ function findLargest(array) {
  *
  * Read the tests to verify you have the correct behavior.
  */
+
+
+
+/**
+ * A function that takes an array of arrays, adds each sub array together, then
+ * adds the total for each array together for the total sum.
+ * 
+ * @param {array[]} arrayContainer 
+ * @returns {number} returns the total of all sub arrays added together
+ */
+function getSumOfSubArrayValues(arrayContainer = []) {
+    let sum = 0;
+
+    sum = arrayContainer.reduce((runningTotal, currentArray) => {
+        let newAmount = currentArray.reduce((previousNum, currentNum) => {
+            return previousNum + currentNum;
+        });
+        return runningTotal + newAmount;
+    }, 0);
+
+    return sum;
+}
+
