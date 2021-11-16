@@ -119,6 +119,7 @@ function makeHappy(stringArray) {
 /**
  * A function that takes an array of address objects, puts them into the correct order,
  * and outputs the addresses as a string array
+ * 
  * @param {object} objectArray The array of Javascript Objects containing addresses
  * @returns {string[]} returns an array of string addresses
  */
@@ -139,11 +140,18 @@ function getFullAddressesOfProperties(objectArray) {
  * It must work for strings and numbers.
  */
 
+/**
+ * A function that finds the largest element in an array, whether it is an array
+ * of strings or an array of numbers.
+ * 
+ * @param {any[]} array an array of strings or numbers
+ * @returns {array[]} returns the largest element in the array
+ */
+
 function findLargest(array) {
     let max = array[0];
 
     array.forEach((value) => {
-
         if (max < value) {
             max = value;
         }
