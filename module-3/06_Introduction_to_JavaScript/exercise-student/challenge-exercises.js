@@ -63,13 +63,13 @@ argument is unused.
         titleCase('the quick brown fox') // should return: 'The Quick Brown Fox'
 */
 
-function titleCase(stringOG, minorWords) {
+function titleCase(stringOG, minorWords = "") {
     let stringArray = stringOG.toLowerCase().split(" ");
+    let optionalWordsArray = minorWords.toLowerCase().split(" ");
 
     for (let i = 0; i < stringArray.length; i++) {
 
-        if (minorWords !== undefined && minorWords !== null) {
-            let optionalWordsArray = minorWords.toLowerCase().split(" ");
+        if (optionalWordsArray.length > 0) {
 
             for (let j = 0; j < optionalWordsArray.length; j++) {
                 if (stringArray[i] === stringArray[0]) {
