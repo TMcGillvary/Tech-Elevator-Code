@@ -42,7 +42,7 @@ function markCompleted() {
     completed.setAttribute("class", "completed");
 
     main.appendChild(completed);
-  })
+  });
 }
 
 setPageTitle();
