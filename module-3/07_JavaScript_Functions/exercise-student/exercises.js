@@ -181,10 +181,10 @@ function findLargest(array) {
 
 
 /**
- * A function that takes an array of arrays, adds each sub array together, then
+ * A function that takes an array of number arrays, adds each sub array together, then
  * adds the total for each array together for the total sum.
  * 
- * @param {array[]} arrayContainer 
+ * @param {array[]} arrayContainer an array of arrays
  * @returns {number} returns the total of all sub arrays added together
  */
 function getSumOfSubArrayValues(arrayContainer = []) {
