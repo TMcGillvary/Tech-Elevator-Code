@@ -37,5 +37,79 @@ function displayGroceries() {
   });
 }
 
-setPageTitle();
-displayGroceries();
+
+/**
+ * Event Listener for loading initial DOM javascript
+ */
+document.addEventListener("DOMContentLoaded", () => {
+
+  // set page title
+  setPageTitle();
+  // display list of groceries
+  displayGroceries();
+
+  const groceryItems = document.querySelectorAll("li");
+
+  groceryItems.forEach((item) => {
+
+    // when you click on an item, mark it completed
+    item.addEventListener("click", () => {
+      markCompleted(item);
+    });
+
+    // when you double click on an item, mark it incomplete
+    item.addEventListener("dblclick", () => {
+      markIncomplete(item);
+    });
+
+  });
+
+  // mark all items as completed
+  const completeBtn = document.getElementById("toggleAll");
+
+  completeBtn.addEventListener("click", () => {
+
+    if (allItemsIncomplete === true) {
+      allItemsIncomplete = false;
+      completeBtn.innerText = "Mark All Incomplete";
+
+      groceryItems.forEach((item) => {
+        markCompleted(item);
+      });
+
+    } else {
+      allItemsIncomplete = true;
+      completeBtn.innerText = "Mark All Complete";
+
+      groceryItems.forEach((item) => {
+        markIncomplete(item);
+      });
+    }
+
+  });
+
+});
+
+/**
+ * This function takes the current item in the array and marks it as completed,
+ * if it is not complete.
+ * @param {item} item The current array item being iterated over
+ */
+function markCompleted(item) {
+  if (!item.classList.contains("completed")) {
+    item.classList.add("completed");
+    item.querySelector("i").classList.add("completed");
+  }
+}
+
+/**
+ * This function takes the current item in the array and marks it as incomplete,
+ * if it is completed.
+ * @param {item} item The current array item being iterated over
+ */
+function markIncomplete(item) {
+  if (item.classList.contains("completed")) {
+    item.classList.remove("completed");
+    item.querySelector("i").classList.remove("completed");
+  }
+}
