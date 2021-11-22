@@ -108,11 +108,43 @@ export default {
   },
 
   computed: {
+    // taking this from Monday's homework with Dave's blessing as we talked through this together after lecture
     filteredList() {
-      // i am just supremely stuck and have no idea how to do this in a way that will let you compare each key value pair to each other
-      // I can get it figured out easily to look at a single filter (i.e. firstName) and I can even extend it out to 2 filters, but I can't figure out how to do them all
-      // using a filter on the users makes sense, but I have no idea where to go from there as every single example I google is only comparing one filter value, not all of them
-      return true;
+      let filteredUsers = this.users;
+      if (this.filter.firstName != "") {
+        filteredUsers = filteredUsers.filter((user) =>
+          user.firstName
+            .toLowerCase()
+            .includes(this.filter.firstName.toLowerCase())
+        );
+      }
+      if (this.filter.lastName != "") {
+        filteredUsers = filteredUsers.filter((user) =>
+          user.lastName
+            .toLowerCase()
+            .includes(this.filter.lastName.toLowerCase())
+        );
+      }
+      if (this.filter.username != "") {
+        filteredUsers = filteredUsers.filter((user) =>
+          user.username
+            .toLowerCase()
+            .includes(this.filter.username.toLowerCase())
+        );
+      }
+      if (this.filter.emailAddress != "") {
+        filteredUsers = filteredUsers.filter((user) =>
+          user.emailAddress
+            .toLowerCase()
+            .includes(this.filter.emailAddress.toLowerCase())
+        );
+      }
+      if (this.filter.status != "") {
+        filteredUsers = filteredUsers.filter(
+          (user) => user.status === this.filter.status
+        );
+      }
+      return filteredUsers;
     },
   },
 };
