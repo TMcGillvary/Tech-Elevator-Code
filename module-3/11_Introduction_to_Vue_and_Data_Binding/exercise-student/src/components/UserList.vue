@@ -32,7 +32,11 @@
         </td>
       </tr>
       <!-- user listing goes here -->
-      <tr v-for="user in users" v-bind:key="user.username">
+      <tr
+        v-for="user in users"
+        v-bind:key="user.username"
+        v-bind:class="{ disabled: user.status === 'Disabled' }"
+      >
         <td>{{ user.firstName }}</td>
         <td>{{ user.lastName }}</td>
         <td>{{ user.username }}</td>
@@ -108,6 +112,7 @@ export default {
       // i am just supremely stuck and have no idea how to do this in a way that will let you compare each key value pair to each other
       // I can get it figured out easily to look at a single filter (i.e. firstName) and I can even extend it out to 2 filters, but I can't figure out how to do them all
       // using a filter on the users makes sense, but I have no idea where to go from there as every single example I google is only comparing one filter value, not all of them
+      return true;
     },
   },
 };
