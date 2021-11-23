@@ -15,7 +15,12 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" />
+            <input
+              type="checkbox"
+              id="selectAll"
+              v-model="allSelected"
+              v-on:click="selectAllCheckboxes()"
+            />
           </td>
           <td>
             <input
@@ -54,6 +59,7 @@
               v-bind:value="user.id"
               v-model="selectedUserIDs"
               v-bind:checked="{ isChecked: selectedUserIDs.includes(user.id) }"
+              v-bind:change="updateSelectAllCheckboxes()"
             />
           </td>
           <td>{{ user.firstName }}</td>
@@ -121,6 +127,7 @@ export default {
   data() {
     return {
       showForm: false,
+      allSelected: false,
       selectedUserIDs: [],
       filter: {
         firstName: "",
@@ -214,8 +221,8 @@ export default {
     enableSelectedUsers() {
       let selectedUsersArray = this.selectedUserIDs;
 
-      selectedUsersArray.forEach((element) => {
-        let userArray = this.users.filter((user) => user.id === element);
+      selectedUsersArray.forEach((id) => {
+        let userArray = this.users.filter((user) => user.id === id);
         userArray.forEach((foundUser) => {
           if (foundUser.status === "Disabled") {
             foundUser.status = "Active";
@@ -227,8 +234,8 @@ export default {
     },
 
     disableSelectedUsers() {
-      this.selectedUserIDs.forEach((element) => {
-        let userArray = this.users.filter((user) => user.id === element);
+      this.selectedUserIDs.forEach((id) => {
+        let userArray = this.users.filter((user) => user.id === id);
         userArray.forEach((foundUser) => {
           if (foundUser.status === "Active") {
             foundUser.status = "Disabled";
@@ -246,6 +253,24 @@ export default {
       });
 
       this.clearCheckboxes();
+    },
+
+    selectAllCheckboxes() {
+      this.allSelected = !this.allSelected;
+      this.selectedUserIDs = [];
+      if (this.allSelected) {
+        this.users.forEach((user) => {
+          this.selectedUserIDs.push(user.id);
+        });
+      }
+    },
+
+    updateSelectAllCheckboxes() {
+      if (this.selectedUserIDs.length == this.users.length) {
+        this.allSelected = true;
+      } else {
+        this.allSelected = false;
+      }
     },
 
     clearCheckboxes() {
