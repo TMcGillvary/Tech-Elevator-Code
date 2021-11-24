@@ -19,7 +19,7 @@
               type="checkbox"
               id="selectAll"
               v-model="allSelected"
-              v-on:click="selectAllCheckboxes()"
+              v-on:click="toggleAllCheckboxes()"
             />
           </td>
           <td>
@@ -59,7 +59,7 @@
               v-bind:value="user.id"
               v-model="selectedUserIDs"
               v-bind:checked="{ isChecked: selectedUserIDs.includes(user.id) }"
-              v-bind:change="updateSelectAllCheckboxes()"
+              v-bind:change="updateToggleAllCheckboxes()"
             />
           </td>
           <td>{{ user.firstName }}</td>
@@ -255,7 +255,7 @@ export default {
       this.clearCheckboxes();
     },
 
-    selectAllCheckboxes() {
+    toggleAllCheckboxes() {
       this.allSelected = !this.allSelected;
       this.selectedUserIDs = [];
       if (this.allSelected) {
@@ -265,7 +265,7 @@ export default {
       }
     },
 
-    updateSelectAllCheckboxes() {
+    updateToggleAllCheckboxes() {
       if (this.selectedUserIDs.length == this.users.length) {
         this.allSelected = true;
       } else {
