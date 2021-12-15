@@ -1,9 +1,17 @@
 <template>
   <form v-on:submit.prevent="submitForm" class="cardForm">
-    <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
+    <div class="status-message error" v-show="errorMsg !== ''">
+      {{ errorMsg }}
+    </div>
     <div class="form-group">
       <label for="title">Title:</label>
-      <input id="title" type="text" class="form-control" v-model="card.title" autocomplete="off" />
+      <input
+        id="title"
+        type="text"
+        class="form-control"
+        v-model="card.title"
+        autocomplete="off"
+      />
     </div>
     <div class="form-group">
       <label for="tag">Tag:</label>
@@ -21,10 +29,20 @@
     </div>
     <div class="form-group">
       <label for="description">Description:</label>
-      <textarea id="description" class="form-control" v-model="card.description"></textarea>
+      <textarea
+        id="description"
+        class="form-control"
+        v-model="card.description"
+      ></textarea>
     </div>
     <button class="btn btn-submit">Submit</button>
-    <button class="btn btn-cancel" v-on:click.prevent="cancelForm" type="cancel">Cancel</button>
+    <button
+      class="btn btn-cancel"
+      v-on:click.prevent="cancelForm"
+      type="cancel"
+    >
+      Cancel
+    </button>
   </form>
 </template>
 
@@ -37,8 +55,8 @@ export default {
   props: {
     cardID: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   data() {
     return {
@@ -48,9 +66,9 @@ export default {
         status: "Planned",
         tag: "",
         avatar: "",
-        date: null
+        date: null,
       },
-      errorMsg: ""
+      errorMsg: "",
     };
   },
   methods: {
@@ -62,19 +80,19 @@ export default {
         status: this.card.status,
         tag: this.card.tag,
         avatar: "https://randomuser.me/api/portraits/lego/1.jpg",
-        date: moment().format("MMM Do YYYY")
+        date: moment().format("MMM Do YYYY"),
       };
 
       if (this.cardID === 0) {
         // add
         boardsService
           .addCard(newCard)
-          .then(response => {
+          .then((response) => {
             if (response.status === 201) {
               this.$router.push(`/board/${newCard.boardId}`);
             }
           })
-          .catch(error => {
+          .catch((error) => {
             this.handleErrorResponse(error, "adding");
           });
       } else {
@@ -84,12 +102,12 @@ export default {
         newCard.date = this.card.date;
         boardsService
           .updateCard(newCard)
-          .then(response => {
+          .then((response) => {
             if (response.status === 200) {
               this.$router.push(`/board/${newCard.boardId}`);
             }
           })
-          .catch(error => {
+          .catch((error) => {
             this.handleErrorResponse(error, "updating");
           });
       }
@@ -100,26 +118,27 @@ export default {
     handleErrorResponse(error, verb) {
       if (error.response) {
         this.errorMsg =
-          "Error " + verb + " card. Response received was '" +
+          "Error " +
+          verb +
+          " card. Response received was '" +
           error.response.statusText +
           "'.";
       } else if (error.request) {
-        this.errorMsg =
-          "Error " + verb + " card. Server could not be reached.";
+        this.errorMsg = "Error " + verb + " card. Server could not be reached.";
       } else {
         this.errorMsg =
           "Error " + verb + " card. Request could not be created.";
       }
-    }
+    },
   },
   created() {
     if (this.cardID != 0) {
       boardsService
         .getCard(this.cardID)
-        .then(response => {
+        .then((response) => {
           this.card = response.data;
         })
-        .catch(error => {
+        .catch((error) => {
           if (error.response && error.response.status === 404) {
             alert(
               "Card not available. This card may have been deleted or you have entered an invalid card ID."
@@ -128,7 +147,7 @@ export default {
           }
         });
     }
-  }
+  },
 };
 </script>
 
